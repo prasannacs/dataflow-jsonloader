@@ -16,7 +16,7 @@ public class MemberFitnessHistory {
 	private Integer Exercise_Calories_Burned;
 	private String Date;
 	
-	@JsonProperty("Member_ID")
+//	@JsonProperty("Member_ID")
 	public String getMember_ID() {
 		return Member_ID;
 	}
@@ -24,7 +24,7 @@ public class MemberFitnessHistory {
 		Member_ID = member_ID;
 	}
 	
-	@JsonProperty("First_Name")
+//	@JsonProperty("First_Name")
 	public String getFirst_Name() {
 		return First_Name;
 	}
@@ -32,7 +32,7 @@ public class MemberFitnessHistory {
 		First_Name = first_Name;
 	}
 	
-	@JsonProperty("Last_Name")
+//	@JsonProperty("Last_Name")
 	public String getLast_Name() {
 		return Last_Name;
 	}
@@ -40,7 +40,7 @@ public class MemberFitnessHistory {
 		Last_Name = last_Name;
 	}
 	
-	@JsonProperty("Gender")
+//	@JsonProperty("Gender")
 	public String getGender() {
 		return Gender;
 	}
@@ -48,7 +48,7 @@ public class MemberFitnessHistory {
 		Gender = gender;
 	}
 	
-	@JsonProperty("Age")
+//	@JsonProperty("Age")
 	public Integer getAge() {
 		return Age;
 	}
@@ -56,7 +56,7 @@ public class MemberFitnessHistory {
 		Age = age;
 	}
 	
-	@JsonProperty("Height")
+//	@JsonProperty("Height")
 	public Integer getHeight() {
 		return Height;
 	}
@@ -64,7 +64,7 @@ public class MemberFitnessHistory {
 		Height = height;
 	}
 	
-	@JsonProperty("Weight")
+//	@JsonProperty("Weight")
 	public Integer getWeight() {
 		return Weight;
 	}
@@ -72,7 +72,7 @@ public class MemberFitnessHistory {
 		Weight = weight;
 	}
 	
-	@JsonProperty("Hours_Sleep")
+//	@JsonProperty("Hours_Sleep")
 	public Integer getHours_Sleep() {
 		return Hours_Sleep;
 	}
@@ -80,7 +80,7 @@ public class MemberFitnessHistory {
 		Hours_Sleep = hours_Sleep;
 	}
 	
-	@JsonProperty("Calories_Consumed")
+//	@JsonProperty("Calories_Consumed")
 	public Integer getCalories_Consumed() {
 		return Calories_Consumed;
 	}
@@ -88,7 +88,7 @@ public class MemberFitnessHistory {
 		Calories_Consumed = calories_Consumed;
 	}
 	
-	@JsonProperty("Exercise_Calories_Burned")
+//	@JsonProperty("Exercise_Calories_Burned")
 	public Integer getExercise_Calories_Burned() {
 		return Exercise_Calories_Burned;
 	}
@@ -96,7 +96,7 @@ public class MemberFitnessHistory {
 		Exercise_Calories_Burned = exercise_Calories_Burned;
 	}
 	
-	@JsonProperty("Date")
+//	@JsonProperty("Date")
 	public String getDate() {
 		return Date;
 	}

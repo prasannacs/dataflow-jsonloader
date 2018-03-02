@@ -29,9 +29,11 @@ import org.apache.beam.sdk.values.PCollection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.api.services.bigquery.model.TableRow;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 /**
  * A starter example for writing Beam programs.
@@ -64,7 +66,7 @@ public class FitnessJSONPipeline {
 		MyOptions options = PipelineOptionsFactory.fromArgs(args).withoutStrictParsing().as(MyOptions.class);
 		Pipeline p = Pipeline.create(options);
 
-		String BUCKET_NAME = "gs://fitness-data/" + args[1].substring(17);
+		String BUCKET_NAME = "gs://fitness-data/" + args[2].substring(17);
 
 		PCollection<String> lines = p.apply(TextIO.read().from(BUCKET_NAME));
 		PCollection<TableRow> row = lines.apply(ParDo.of(new StringToRowConverter()));
@@ -83,14 +85,16 @@ public class FitnessJSONPipeline {
 		@ProcessElement
 		public void processElement(ProcessContext c) {
 			System.out.println("c element "+c.element());
-			ObjectMapper mapper = new ObjectMapper();
-//			mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
-			MemberFitnessHistory historyLineItem = null;
-			try	{
-			historyLineItem = mapper.readValue(c.element(), MemberFitnessHistory.class);
-			}catch(Exception e){
-				e.printStackTrace();
-			}
+			Gson gson = new GsonBuilder().create();
+			MemberFitnessHistory historyLineItem = gson.fromJson(c.element(), MemberFitnessHistory.class);
+			
+//			ObjectMapper mapper = new ObjectMapper();
+//			MemberFitnessHistory historyLineItem = null;
+//			try	{
+//			historyLineItem = mapper.readValue(c.element(), MemberFitnessHistory.class);
+//			}catch(Exception e){
+//				e.printStackTrace();
+//			}
 			System.out.println("historyLineItem -- "+historyLineItem.getDate());
 			String[] split = c.element().split(",");
 			// c.output(new TableRow().set("",c.element()));
